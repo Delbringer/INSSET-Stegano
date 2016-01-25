@@ -1,5 +1,5 @@
 ## INSSET-Steganographie
-<blockquote><i>Repository created for educational purpose by students</i></blockquote>
+<blockquote><i>Repository created by students for educational purpose</i></blockquote>
 
 ----------
 # Présentation de la stéganographie
@@ -8,3 +8,6 @@ A l'instare du cryptage, la stéganographie a pour vocation de dissimuler une in
 A ceci près qu'il faille déjà qu'un message soit dissimulé. En effet, puisque le message est caché, il n'y a presque aucun moyen de savoir si un message est présent tant que l'on ne l'a pas trouvé. Des messages peuvent passer sous vos yeux sans que vous ne les voyez, ou alors vous pouvez vous mettre à chercher un message innexistant.
 Voilà toute la puissance de la stéganographie !
 
+## Des méthodes simples
+
+Il existe des moyens simples en informatique pour réaliser de la stéganographie. Nous allons vous présenter deux cas parmis les plus simples qu'il soit: les images au format Bitmap et au format PNG.
