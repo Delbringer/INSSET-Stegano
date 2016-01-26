@@ -5,7 +5,7 @@
 # Présentation de la stéganographie
 
 A l'instare du cryptage, la stéganographie a pour vocation de dissimuler une information. Mais plutôt que de la rendre illisible par une tierce personne, la stéganographie rend l'information invisible, ou du moins cherche à le faire. Si il est necessaire de passer beaucoup de temps à analyser les messages pour casser le code utilisé en cryptographie, il en est de même pour comprendre la structure du message en stéganographie. <br>
-A ceci près qu'il faille déjà qu'un message soit dissimulé. En effet, puisque le message est caché, il n'y a presque aucun moyen de savoir si un message est présent tant que l'on ne l'a pas trouvé. Des messages peuvent passer sous vos yeux sans que vous ne les voyez, ou alors vous pouvez vous mettre à chercher un message innexistant.
+A ceci près qu'il faille déjà qu'un message soit dissimulé. En effet, puisque le message est caché, il n'y a presque aucun moyen de savoir si un message est présent tant que l'on ne l'a pas trouvé. Des messages peuvent passer sous vos yeux sans que vous ne les voyez, ou alors vous pouvez vous mettre à chercher un message innexistant.<br>
 Voilà toute la puissance de la stéganographie !
 
 ## Des méthodes simples
@@ -27,3 +27,13 @@ Le principe est un peu différent: plutôt que de noter la valeur de chaque pixe
 L'avantage est que sur des images simples, le poids est grangement réduit. Mais en ce qui nous concerne, c'est surtout la table qui nous interesse.<br>
 Il suffit d'écrire des valeurs dans la table qui ne sont pas utilisé dans l'image et le tour est joué ! plutôt simple, non ?
 ![png_exemple](https://cloud.githubusercontent.com/assets/16888022/12570186/b593e780-c3d5-11e5-9f33-93627991e877.png)
+Le format PNG accept même un codage sur 48 bits, soit<strong> environs 281.000 milliard de valeurs !</strong><br>
+Le seul inconvéniant, c'est que si vous avez une petite image avec seulement dix couleurs différentes qui pèse 1 Mo, c'est tout de suite suspect et il est facile de voir qu'il y a des couleurs non utilisées, donc il faut savoir doser la quantité d'information à injecter.
+
+## Des outils libres
+
+La communautée open source pronant la libérté, et la stéganographie permettant dans certain pays de passer outre la censure, il n'est pas surprenant de trouver un certain nombre d'outils libres sur le sujet.<br>
+On trouve par exemple le packet `steghide` qui permet très simplement de dissimuler du texte dans une image, ou un fichier audio dans un autre ou dans une vidéo. Par exemple: <br>
+`steghide embed --embedfile MonSecret.png --coverfile MonCamouflage.png`
+L'image MonSecret.png est cachée dans une autre image qui s'appelle MonCamouflage.png.
+
