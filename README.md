@@ -11,3 +11,7 @@ Voilà toute la puissance de la stéganographie !
 ## Des méthodes simples
 
 Il existe des moyens simples en informatique pour réaliser de la stéganographie. Nous allons vous présenter deux cas parmis les plus simples qu'il soit: les images au format Bitmap et au format PNG.
+
+Commençons par les images au format bitmap !
+Pour ce format, chaque pixel de l'image peut être codé autant sur 1 bit que sur 24, soit entre 2 et 16 millions de nuances.
+![bitmap_exemple](https://cloud.githubusercontent.com/assets/16888022/12569462/71e0efac-c3cf-11e5-9146-8985719811c8.png)
