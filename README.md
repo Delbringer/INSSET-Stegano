@@ -33,7 +33,7 @@ Le seul inconvéniant, c'est que si vous avez une petite image avec seulement di
 ## Des outils libres
 
 La communautée open source pronant la libérté, et la stéganographie permettant dans certain pays de passer outre la censure, il n'est pas surprenant de trouver un certain nombre d'outils libres sur le sujet.<br>
-On trouve par exemple le packet **`steghide`** qui permet très simplement de dissimuler du texte dans une image, ou un fichier audio dans un autre ou dans une vidéo. Par exemple: <br>
+On trouve par exemple le packet [**`steghide`**](http://steghide.sourceforge.net/) qui permet très simplement de dissimuler du texte dans une image, ou un fichier audio dans un autre ou dans une vidéo. Par exemple: <br>
 `steghide embed --embedfile MonSecret.png --coverfile MonCamouflage.png`<br>
 L'image MonSecret.png est cachée dans une autre image qui s'appelle MonCamouflage.png.
 
