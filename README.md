@@ -33,7 +33,37 @@ Le seul inconvéniant, c'est que si vous avez une petite image avec seulement di
 ## Des outils libres
 
 La communautée open source pronant la libérté, et la stéganographie permettant dans certain pays de passer outre la censure, il n'est pas surprenant de trouver un certain nombre d'outils libres sur le sujet.<br>
-On trouve par exemple le packet `steghide` qui permet très simplement de dissimuler du texte dans une image, ou un fichier audio dans un autre ou dans une vidéo. Par exemple: <br>
-`steghide embed --embedfile MonSecret.png --coverfile MonCamouflage.png`
+On trouve par exemple le packet **`steghide`** qui permet très simplement de dissimuler du texte dans une image, ou un fichier audio dans un autre ou dans une vidéo. Par exemple: <br>
+`steghide embed --embedfile MonSecret.png --coverfile MonCamouflage.png`<br>
 L'image MonSecret.png est cachée dans une autre image qui s'appelle MonCamouflage.png.
+
+Voici un exemple concret:<br>
+Nous avons une image lambda et une image à cacher.
+![tmp1](https://cloud.githubusercontent.com/assets/16888022/12570847/a6d5b29a-c3db-11e5-85e9-c5bbb24c3345.PNG)
+![tmp3](https://cloud.githubusercontent.com/assets/16888022/12570875/d8b3a9de-c3db-11e5-8aa5-5898242c6871.PNG)
+
+On obtient alors l'image suivante:
+![tmp2](https://cloud.githubusercontent.com/assets/16888022/12570899/0e8eea8c-c3dc-11e5-9cb4-494baf14d9be.PNG)
+
+Si vous arrivez à voir une différence à l'oeil nu, je veux bien manger mon chapeau !
+
+
+Il est également possible de trouver une variété de librairies dans de nombreux langages pour réaliser facilement un programme de stéganographie. Vous pouvez par exemple employer le module `Image` la librairie `PIL` de Python pour reproduire les techniques que j'ai montré au début !<br>
+```
+from PIL import Image
+
+secret_stream = []; contient le message bit à bit
+j = 0; index de secret_stream
+
+I = Image.open( "facade.jpg" );
+matrice = list( I.getdata() ); on récupère la liste des pixels
+width, height = matrice.size; on récupère les dimensions de l'image
+
+for y in range(height) :
+  for x in range(width) :
+    matrice[x,y] = matrice[x,y] - ( matrice[x,y] % 2 ) + secret_stream[j]; écrit le message bit à bit
+    j++;
+```
+
+Il y a une multitude de possibilité pour dissimuler un message: il suffit d'être créatif !
 
