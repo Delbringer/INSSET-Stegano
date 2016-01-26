@@ -4,8 +4,8 @@
 ----------
 # Présentation de la stéganographie
 
-A l'instare du cryptage, la stéganographie a pour vocation de dissimuler une information. Mais plutôt que de la rendre illisible par une tierce personne, la stéganographie rend l'information invisible, ou du moins cherche à le faire. Si il est necessaire de passer beaucoup de temps à analyser les messages pour casser le code utilisé en cryptographie, il en est de même pour comprendre la structure du message en stéganographie. <br>
-A ceci près qu'il faille déjà qu'un message soit dissimulé. En effet, puisque le message est caché, il n'y a presque aucun moyen de savoir si un message est présent tant que l'on ne l'a pas trouvé. Des messages peuvent passer sous vos yeux sans que vous ne les voyez, ou alors vous pouvez vous mettre à chercher un message innexistant.<br>
+A l'instare du cryptage, la stéganographie a pour vocation de dissimuler une information. Mais plutôt que de la rendre illisible par une tierce personne, **la stéganographie rend l'information invisible**, ou du moins cherche à le faire. Si il est necessaire de passer beaucoup de temps à analyser les messages pour casser le code utilisé en cryptographie, il en est de même pour comprendre la structure du message en stéganographie. <br>
+A ceci près qu'il faille déjà qu'un message soit dissimulé. En effet, puisque le message est caché, il n'y a **presque aucun moyen de savoir si un message est présent** tant que l'on ne l'a pas trouvé. Des messages peuvent passer sous vos yeux sans que vous ne les voyez, ou alors vous pouvez vous mettre à chercher un message innexistant.<br>
 Voilà toute la puissance de la stéganographie !
 
 ## Des méthodes simples
@@ -15,7 +15,7 @@ Il existe des moyens simples en informatique pour réaliser de la stéganographi
 ### Bitmap
 
 Commençons par les images au format bitmap. 
-Pour ce format, chaque pixel de l'image peut être codé autant sur 1 bit que sur 24, soit <strong>entre 2 et 16,8 millions de couleurs !</strong><br>
+Pour ce format, chaque pixel de l'image peut être codé autant sur 1 bit que sur 24, soit **entre 2 et 16,8 millions de couleurs !**<br>
 Vous pensez bien que sur 16 millions de nuances, il y en a beacoup qui se ressemblent !<br>
 D'où l'idée suivante: cachez un message sur le bit de poids faible. En effet, le bit de poids faible ne vaut que 1, donc vous aurez du mal à voir la diférence entre du rouge 255 et du rouge 254. Et comme les images contienent de plus en plus de pixel, je vous laisse imaginer combien d'espace nous avons maintenant pour y cacher des informations.
 ![bitmap_exemple](https://cloud.githubusercontent.com/assets/16888022/12569462/71e0efac-c3cf-11e5-9146-8985719811c8.png)
@@ -27,7 +27,7 @@ Le principe est un peu différent: plutôt que de noter la valeur de chaque pixe
 L'avantage est que sur des images simples, le poids est grangement réduit. Mais en ce qui nous concerne, c'est surtout la table qui nous interesse.<br>
 Il suffit d'écrire des valeurs dans la table qui ne sont pas utilisé dans l'image et le tour est joué ! plutôt simple, non ?
 ![png_exemple](https://cloud.githubusercontent.com/assets/16888022/12570186/b593e780-c3d5-11e5-9f33-93627991e877.png)
-Le format PNG accept même un codage sur 48 bits, soit<strong> environs 281.000 milliard de valeurs !</strong><br>
+Le format PNG accept même un codage sur 48 bits, soit** environs 281.000 milliard de valeurs !**<br>
 Le seul inconvéniant, c'est que si vous avez une petite image avec seulement dix couleurs différentes qui pèse 1 Mo, c'est tout de suite suspect et il est facile de voir qu'il y a des couleurs non utilisées, donc il faut savoir doser la quantité d'information à injecter.
 
 ## Des outils libres
@@ -65,5 +65,20 @@ for y in range(height) :
     j++;
 ```
 
-Il y a une multitude de possibilité pour dissimuler un message: il suffit d'être créatif !
+## Moyens de censure
 
+Si il est très difficile de détecter un message dissimulé par certaines techniques de stéganographie, **il est cependant assez aisé de les détruire**. Il existe en effet des techniques préventives dites de "**stérilisation**" ayant pour but de détruire tout message potentiel. Ces techniques sont majoritairement employées dans les pays dictatoriaux et/ou à forte censure, voir dans certaines entreprises.
+
+Le principe est simple: tout les fichiers sont interceptés, puis compressé à perte. Lors d'une compression à perte, l'image est fortement dégradée et donc tout message dissimulé est détruit. Certaines techniques restent cependant résistantes à la stérilisation.
+
+## Application dans l'embarqué
+
+Il y a une multitude de possibilité pour dissimuler un message: il suffit d'être créatif !<br>
+De ce fait, il est également possible d'appliquer ce principe en electronique.
+
+L'avantage c'est qu'il n'est pas necessaire de rajouter un module de cryptographie, ou de faire faire des calculs complexes à un microcontrôleur. Il peut également être utilisé en complément de la cryptographie pour augmenter le niveau de sécurité. <br>
+
+Il est possible par exemple d'envoyer un message avec le protocol ethernet tout en lui fournissant un cheksum invalide, qui serait en fait notre message. Toute personne écoutant le réseau n'aurait alors qu'une partie de l'information car généralement personne ne prête attention aux paquets endommagés.<br>
+C'est généralement simple à mettre en place et peu gourmand en ressource.
+
+Serez vous assez créatif pour trouver votre propre technique ?
